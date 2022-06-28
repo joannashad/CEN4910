@@ -1,96 +1,139 @@
 <ll-search-hero></ll-search-hero>
 <div class="ll-search pb-6">
-    <div class="container">
-        <div class="border overflow-hidden sm:rounded-md p-5">
-            <div class="container">
-                <div class="">
-                  <div class="grid gap-2 grid-cols-2 ">
-                    <div class="col-span-1" style="object-fit:scale-down;">
-                      <div>
-                        <h1 class="rounded-md bg-white bg-opacity-10 pt-20" style=" font-size: 20px;
+  <div class="container">
+    <div class="border overflow-hidden sm:rounded-md p-5">
+      <div class="container">
+        <div class="">
+          <div class="grid gap-2 grid-cols-2 ">
+            <div class="col-span-1" style="object-fit:scale-down;">
+              <div>
+                <h1 class="rounded-md bg-white bg-opacity-10 pt-20" style=" font-size: 20px;
                         line-height: 50px;
                         font-weight:400;
                         text-align: center; 
                         color: black;">
-                          Compare and rank apartments based on rent and energy costs.
-                        </h1>
-                      </div>  
+                  Compare apartments based on energy rank and utility costs.
+                </h1>
+              </div>
 
-                      <!-- </div> -->
-          
-                      <!-- if the address radio button is selected, autocomplete is pulled from 
+              <!-- </div> -->
+
+              <!-- if the address radio button is selected, autocomplete is pulled from 
                       the addresses in the database -->
-                      <div *ngIf="searchPreference=='1'">
-                        <div class="flex justify-center items-center" style="object-fit:scale-down;">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                              <mat-label class="text-black">Search by address</mat-label>
-                              <input type="text"
-                                    placeholder="Select an address"
-                                    aria-label=""
-                                    matInput
-                                    [formControl]="myControl"
-                                    [matAutocomplete]="auto">
-                              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                                <mat-option *ngFor="let product of products" [value]="product.address">
-                                  {{product.address}}
-                                </mat-option>
-                              </mat-autocomplete>
-                            </mat-form-field>
-                          </form>
-                        </div>
-                      </div>
-            
-                      <!-- if the neighborhood radio button is selected, autocomplete is pulled from 
-                      the options list in the home.component.ts file -->
-                      <div *ngIf="searchPreference=='2'">
-                        <div class="flex justify-center items-center" style="object-fit:scale-down;">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                              <mat-label>Search by neighborhood</mat-label>
-                              <input type="text"
-                                    placeholder="Select a neighborhood"
-                                    aria-label=""
-                                    matInput
-                                    [formControl]="myControl"
-                                    [matAutocomplete]="auto">
-                              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                                  {{option}}
-                                </mat-option>
-                              </mat-autocomplete>
-                            </mat-form-field>
-                          </form>
-                        </div>
-                      </div>
-                      
-            
-                      <div class="flex flex-wrap justify-center items-center mt-2" style="text-align: right;">
-            
-                        <div class="rounded-md bg-white bg-opacity-10 px-5 py-5inline-block mr-5" style="color: black;">
-                          <mat-radio-group class="searchbar-radio-group" (change)="changeComboo($event)" [(ngModel)]="searchPreference">
-                            <mat-radio-button class="px-1 py-2 mx-3" value="1" color="primary" [checked]="true">
-                              Address
-                            </mat-radio-button>
-                            
-                            <mat-radio-button class="px-1 py-2 mx-3" value="2" color="warn">
-                              Neighborhood
-                            </mat-radio-button>
-                          </mat-radio-group>
-                        </div>          
-                      </div>
-                    </div>
-                    <div class="col-start-2 col-span-1">
-                      <img name="map"  src="/assets/images/google-maps/energy map.jpg" style="height: 400px;">
-                    </div>
-                  </div>
-                  <div>
-
-                  </div>
+              <div *ngIf="searchPreference=='1'">
+                <div class="flex justify-center items-center" style="object-fit:scale-down;">
+                  <form class="example-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label class="text-black">Search by address</mat-label>
+                      <input type="text" placeholder="Select an address" aria-label="" matInput
+                        [formControl]="myControl" [matAutocomplete]="auto">
+                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let product of products" [value]="product.address">
+                          {{product.address}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
                 </div>
               </div>
+
+              <!-- if the neighborhood radio button is selected, autocomplete is pulled from 
+                      the options list in the home.component.ts file -->
+              <div *ngIf="searchPreference=='2'">
+                <div class="flex justify-center items-center" style="object-fit:scale-down;">
+                  <form class="example-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Search by neighborhood</mat-label>
+                      <input type="text" placeholder="Select a neighborhood" aria-label="" matInput
+                        [formControl]="myControl" [matAutocomplete]="auto">
+                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
+                </div>
+              </div>
+
+
+              <div class="flex flex-wrap justify-center items-center mt-2" style="text-align: right;">
+
+                <div class="rounded-md bg-white bg-opacity-10 px-5 py-5inline-block mr-5"
+                  style="color: black; padding-bottom: 40px">
+                  <mat-radio-group class="searchbar-radio-group" (change)="changeComboo($event)"
+                    [(ngModel)]="searchPreference">
+                    <mat-radio-button class="px-1 py-2 mx-3" value="1" color="primary" [checked]="true">
+                      Address
+                    </mat-radio-button>
+
+                    <mat-radio-button class="px-1 py-2 mx-3" value="2" color="warn">
+                      Neighborhood
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <!--Start optional Energy Rating and Utilities Cost searches-->
+              <h5 style="text-align:center">Energy Star Rating</h5>
+              <div class="mt-3 justify-between flex-wrap"
+                style="text-align:center; padding-bottom: 40px;padding-top: 20px;">
+                <mat-checkbox style="margin-right:30px;"><img
+                    src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" height="30" width="30" />
+                  Superior<br>5.0 - 4.0
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:30px;"><img
+                    src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" height="30" width="30" />
+                  Excellent<br>3.9 - 3.0
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:30px;"><img
+                    src="http://maps.google.com/mapfiles/ms/icons/purple-dot.png" height="30" width="30" />
+                  Good<br>2.9 - 2.0
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:30px;"><img
+                    src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" height="30" width="30" />
+                  Poor<br>1.9 - 1.0
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:30px;"><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                    height="30" width="30" />
+                  Non<br>Compiant<br>
+                </mat-checkbox>
+              </div>
+              <h5 style="text-align:center">Total Utilities Cost</h5>
+              <div class="mt-3 justify-between flex-wrap" style="padding-top: 10px; text-align:center">
+                <mat-checkbox style="margin-right:10px;"><img src="http://maps.google.com/mapfiles/ms/icons/green.png"
+                    height="30" width="30" />
+                  Low<br> Under $100
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:10px;"><img
+                    src="http://maps.google.com/mapfiles/ms/icons/lightblue.png" height="30" width="30" />
+                  Below<br>Average<br> $101 - $150
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:10px;"><img src="http://maps.google.com/mapfiles/ms/icons/yellow.png"
+                    height="30" width="30" />
+                  Average<br> $151 - $200
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:10px;"><img src="http://maps.google.com/mapfiles/ms/icons/orange.png"
+                    height="30" width="30" />Above<br>Average<br> $201 - $250
+                </mat-checkbox>
+                <mat-checkbox style="margin-right:10px;"><img src="http://maps.google.com/mapfiles/ms/icons/red.png"
+                    height="30" width="30" />
+                  High<br>Over $250
+                </mat-checkbox>
+              </div>
+              <!--End optional Energy Range and Utility Cost searches-->
+
+            </div>
+            <div class="col-start-2 col-span-1">
+              <img name="map" src="/assets/images/google-maps/energy map.jpg" style="height: 600px;">
+            </div>
+          </div>
+          <div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -101,7 +144,7 @@
       <h3 class="ll-service__title text-center font-extralight mb-12">Featured Housing</h3>
       <h4 class="ll-section-head__subheading">Top most affordable housing today.</h4>
     </div>
-    <div> 
+    <div>
       <mat-table #table [dataSource]="products" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
@@ -110,8 +153,9 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let product of products"> 
-            <a [routerLink]="['/products', product.id]" style="color: #004B8D;">{{product.name}} </a></mat-cell>
+          <mat-cell *matCellDef="let product of products">
+            <a [routerLink]="['/products', product.id]" style="color: #004B8D;">{{product.name}} </a>
+          </mat-cell>
         </ng-container>
 
         <!-- Address Column -->
