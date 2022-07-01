@@ -26,12 +26,8 @@
               <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Search by address</mat-label>
-                  <input type="text"
-                        placeholder="Select an address"
-                        aria-label=""
-                        matInput
-                        [formControl]="myControl"
-                        [matAutocomplete]="auto">
+                  <input type="text" className="test1" placeholder="Select an address" aria-label="" matInput
+                    [formControl]="myControl" [matAutocomplete]="auto">
                   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                     <mat-option *ngFor="let product of products" [value]="product.address">
                       {{product.address}}
@@ -49,12 +45,8 @@
               <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Search by neighborhood</mat-label>
-                  <input type="text"
-                        placeholder="Select a neighborhood"
-                        aria-label=""
-                        matInput
-                        [formControl]="myControl"
-                        [matAutocomplete]="auto">
+                  <input type="text" placeholder="Select a neighborhood" aria-label="" matInput
+                    [formControl]="myControl" [matAutocomplete]="auto">
                   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                       {{option}}
@@ -64,21 +56,22 @@
               </form>
             </div>
           </div>
-          
+
 
           <div class="flex flex-wrap justify-center items-center mt-2" style="text-align: right;">
 
             <div class="rounded-md bg-white bg-opacity-10 px-5 py-5inline-block mr-5" style="color: white;">
-              <mat-radio-group class="searchbar-radio-group" (change)="changeComboo($event)" [(ngModel)]="searchPreference">
+              <mat-radio-group class="searchbar-radio-group" (change)="changeComboo($event)"
+                [(ngModel)]="searchPreference">
                 <mat-radio-button class="px-1 py-2 mx-3" value="1" color="primary" [checked]="true">
                   Address
                 </mat-radio-button>
-                
+
                 <mat-radio-button class="px-1 py-2 mx-3" value="2" color="warn">
                   Neighborhood
                 </mat-radio-button>
               </mat-radio-group>
-            </div>          
+            </div>
           </div>
         </div>
       </div>
@@ -96,7 +89,7 @@
       <h3 class="ll-service__title text-center font-extralight mb-12">Featured Housing</h3>
       <h4 class="ll-section-head__subheading">Top most affordable housing today.</h4>
     </div>
-    <div> 
+    <div>
       <mat-table #table [dataSource]="products" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
@@ -105,8 +98,9 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let product of products"> 
-            <a [routerLink]="['/products', product.id]" style="color: #004B8D;">{{product.name}} </a></mat-cell>
+          <mat-cell *matCellDef="let product of products">
+            <a [routerLink]="['/products', product.id]" style="color: #004B8D;">{{product.name}} </a>
+          </mat-cell>
         </ng-container>
 
         <!-- Address Column -->
@@ -174,12 +168,14 @@
       <div class="ll-process col-span-12 sm:col-span-6 lg:col-span-3">
         <div class="number">02</div>
         <h3 class="mb-2 font-bold" style="color: #FBB92F;">Choose</h3>
-        <p class="text-white" style="color: #fff;">Select from a wide range of available housing based on your needs.</p>
+        <p class="text-white" style="color: #fff;">Select from a wide range of available housing based on your needs.
+        </p>
       </div>
       <div class="ll-process col-span-12 sm:col-span-6 lg:col-span-3">
         <div class="number">03</div>
         <h3 class="mb-2 font-bold" style="color: #FBB92F;">Calculate</h3>
-        <p class="text-white" style="color: #fff;">Estimate your monthly rent and utility costs with easy to use tools.</p>
+        <p class="text-white" style="color: #fff;">Estimate your monthly rent and utility costs with easy to use tools.
+        </p>
       </div>
       <div class="ll-process col-span-12 sm:col-span-6 lg:col-span-3">
         <div class="number">04</div>
